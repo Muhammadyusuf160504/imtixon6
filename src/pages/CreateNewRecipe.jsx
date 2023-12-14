@@ -61,6 +61,11 @@ function CreateNewRecipe({ userId }) {
       userid: userId,
     };
     console.log(data);
+    setTitle("");
+    setCookingTime("");
+    setImages("");
+    setIngredients("");
+    setMethod("");
     // await addDoc(collection(db, "create-foot"), { ...data });
   };
 
@@ -68,7 +73,7 @@ function CreateNewRecipe({ userId }) {
     <div className="flex flex-col items-center">
       <h1 className="text-5xl text-slate-900 pb-14">Create New Recipe</h1>
       <form onSubmit={handleSubmit} className="flex flex-col">
-        <label className="">
+        <label className="flex flex-col gap-4">
           <span>Title:</span>
           <input
             type="text"
@@ -78,9 +83,9 @@ function CreateNewRecipe({ userId }) {
             className="input input-bordered input-md w-full max-w-xs"
           />
         </label>
-        <label>
+        <label className="flex flex-col gap-4">
           <span>Ingredients:</span>
-          <div>
+          <div className="flex gap-3">
             <input
               type="text"
               placeholder="Type Ingredients"
@@ -88,17 +93,33 @@ function CreateNewRecipe({ userId }) {
               value={ingredient}
               className="input input-bordered input-md w-full max-w-xs"
             />
-            <button onClick={addIngredient} type="submit">
+            <button
+              className="btn btn-primary"
+              onClick={addIngredient}
+              type="submit"
+            >
               Add
             </button>
           </div>
-          <p>Ingredienst:</p>
-          {ingredients.length &&
-            ingredients.map((ingredient) => {
-              return <p key={ingredient}>{ingredient}</p>;
-            })}
+          <div className="flex gap-2">
+            <p className="text-lg">Ingredienst:</p>
+            <div className="flex mb-3">
+              {ingredients.length ? (
+                ingredients.map((ingredient, index, arr) => {
+                  return (
+                    <p className="text-lg text-red-500" key={ingredient}>
+                      {ingredient}
+                      {index === arr.length - 1 ? "." : ","}
+                    </p>
+                  );
+                })
+              ) : (
+                <div>No ingredients:(</div>
+              )}
+            </div>
+          </div>
         </label>
-        <label>
+        <label className="flex flex-col gap-4">
           <span>Cooking Time:</span>
           <input
             type="number"
@@ -110,7 +131,7 @@ function CreateNewRecipe({ userId }) {
         </label>
         <label>
           <span>Images URL:</span>
-          <div>
+          <div className="flex gap-3">
             <input
               type="url"
               placeholder="Past URL"
@@ -118,21 +139,28 @@ function CreateNewRecipe({ userId }) {
               value={image}
               className="input input-bordered input-md w-full max-w-xs"
             />
-            <button onClick={addImage} type="submit">
+            <button
+              className="btn btn-primary"
+              onClick={addImage}
+              type="submit"
+            >
               Add
             </button>
           </div>
           <div>
-            <p>Image</p>
-            <div className="flex justify-between">
-              {images.length &&
+            <p className="text-lg">Image</p>
+            <div className="flex justify-between p-2">
+              {images.length ? (
                 images.map((image) => {
                   return <img key={image} src={image} alt="image" width={70} />;
-                })}
+                })
+              ) : (
+                <div>No Image:(</div>
+              )}
             </div>
           </div>
         </label>
-        <label>
+        <label className="flex flex-col gap-4">
           <span>Method:</span>
           <textarea
             placeholder="Type Method"
