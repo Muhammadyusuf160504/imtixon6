@@ -3,10 +3,10 @@
 // import useCollection from "../hooks/useCollection";
 // import { db } from "../firebase/firebaseConfig";
 // import useCollection from "../hooks/useCollection";
-import { useGlobalContext } from "../hooks/useGlobalContext";
-import CreateNewRecipe from "./CreateNewRecipe";
+// import { useGlobalContext } from "../hooks/useGlobalContext";
+// import CreateNewRecipe from "./CreateNewRecipe";
 function Home() {
-  const { user } = useGlobalContext();
+  // const { user } = useGlobalContext();
 
   // <CreateNewRecipe userId={user.uid} />;
 

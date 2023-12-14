@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 // import { collection, doc, addDoc, setDoc } from "firebase/firestore";
 // import { db } from "../firebase/FirebaseConfig";
-// import { useGlobalContext } from "../hooks/useGlobalContext";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
-function CreateNewRecipe({ userId }) {
-  // const { user } = useGlobalContext();
+function CreateNewRecipe() {
+  const { user } = useGlobalContext();
+  const userId = user.uid;
 
   const [title, setTitle] = useState("");
   const [method, setMethod] = useState("");
@@ -52,20 +54,25 @@ function CreateNewRecipe({ userId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      title: title,
-      cookingTime: cookingTime,
-      images: images,
-      ingregients: ingredients,
-      method: method,
-      userid: userId,
-    };
-    console.log(data);
-    setTitle("");
-    setCookingTime("");
-    setImages("");
-    setIngredients("");
-    setMethod("");
+    if ((title, cookingTime, images, ingredient, method, userId)) {
+      const data = {
+        title: title,
+        cookingTime: cookingTime,
+        images: images,
+        ingregients: ingredients,
+        method: method,
+        userid: userId,
+      };
+      console.log(data);
+      setTitle("");
+      setCookingTime("");
+      setImages("");
+      setIngredients("");
+      setMethod("");
+      return <Navigate to="/" />;
+    } else {
+      alert("Malumotlar Yetarli emas !");
+    }
     // await addDoc(collection(db, "create-foot"), { ...data });
   };
 
@@ -129,7 +136,7 @@ function CreateNewRecipe({ userId }) {
             className="input input-bordered input-md w-full max-w-xs"
           />
         </label>
-        <label>
+        <label className="flex flex-col gap-4 mt-4">
           <span>Images URL:</span>
           <div className="flex gap-3">
             <input
@@ -169,7 +176,7 @@ function CreateNewRecipe({ userId }) {
             className="textarea textarea-bordered textarea-md w-full max-w-xs"
           ></textarea>
         </label>
-        <div className="flex justify-between">
+        <div className="flex justify-between mt-5">
           <button type="submit" className="btn btn-active btn-primary">
             CREATE
           </button>
