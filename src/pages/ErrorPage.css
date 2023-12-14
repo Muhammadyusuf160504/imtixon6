@@ -1,0 +1,38 @@
+.error-div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.home-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.error-title {
+  font-size: 50px;
+  font-weight: bolder;
+  color: red;
+}
+
+.error-p {
+  font-size: 25px;
+  color: black;
+}
+
+.error-link {
+  border: 2px solid rgb(66, 66, 253);
+  padding: 4px 8px;
+  border-radius: 15px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+.error-link:hover {
+  border-radius: 5px;
+  background-color: aquamarine;
+}

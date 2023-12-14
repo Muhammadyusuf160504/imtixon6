@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 100;
+}
+
+.header-asosiy-container {
+  background-color: aqua;
+}
+
+.form {
+  width: 100%;
+  max-width: 450px;
+  margin: 50px auto 0 auto;
+  padding: 25px;
+  border-radius: 50px 10px 50px 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup-login-btn {
+  width: 100%;
+  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 12px 15px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 15px 7px 15px 7px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header-bg {
+  border-radius: 50%;
+  cursor: pointer;
+}
